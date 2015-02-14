@@ -1,6 +1,6 @@
-# SatNOGS Intro
+# SatNOGS Presentations
 
-An intro talk about SatNOGS based on reveal.js
+A collection of presentations about SatNOGS based on reveal.js
 
 ## License
 Galileo Ground Station image and space debris image Copyright by ESA.
