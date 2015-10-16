@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+
+        <head>
+                <meta charset="utf-8">
+
+                <title>SatNOGS - An intro</title>
+
+                <meta name="description" content="SatNOGS - Satellite Networked Open Ground Station">
+                <meta name="author" content="SatNOGS team">
+
+                <meta name="apple-mobile-web-app-capable" content="yes" />
+                <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+                <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+                <link rel="stylesheet" href="css/reveal.css">
+                <link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+                <!-- Code syntax highlighting -->
+                <link rel="stylesheet" href="lib/css/zenburn.css">
+
+                <!-- Printing and PDF exports -->
+                <script>
+                        var link = document.createElement( 'link' );
+                        link.rel = 'stylesheet';
+                        link.type = 'text/css';
+                        link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+                        document.getElementsByTagName( 'head' )[0].appendChild( link );
+                </script>
+
+                <!--[if lt IE 9]>
+                <script src="lib/js/html5shiv.js"></script>
+                <![endif]-->
+        </head>
+
+        <body>
+
+                <div class="reveal">
+
+                        <!-- Any section element inside of this container is displayed as a slide -->
+                        <div class="slides">
+                                <section data-background="./satnogs-logo-horizontal.png" data-background-color="#000000" data-background-size="500px">
+                                </section>
+                                <section>
+                                        <h2>Hello!</h2>
+                                        <p>We are hunting satellites.</p>
+                                        <aside class="notes">
+                                          <small>
+                                            hello.
+                                            my name is John Giannelos and I am going to talk tou you about satnogs.
+                                            SatNOGS started as a project in Athens Hackerspace and now consists of satellite enthusiasts all around the world.
+                                            And as satellite enthusiasts we are hunting satellites.
+                                            Specifically the signals of them.
+                                            That's way we created SatNOGS.
+                                          </small>
+                                        </aside>
+                                </section>
+                                <section>
+                                  <h2>What is SatNOGS?</h2>
+                                  <aside class="notes">
+                                    SatNOGS is a global network of satellite ground stations.
+                                    But let's start with the basics.
+                                  </aside>
+                                </section>
+                                <section>
+                                        <section data-background="./Distribution_of_debris.jpg">
+                                                <div style="background-color: rgba(0, 0, 0, 0.6); color: #fff; padding: 20px; border-radius: 20px;">
+                                                        <h2>Earth has many satellites</h2>
+                                                        <p>6000+ of them!</p>
+                                                        <aside class="notes">
+                                                          Satellites can be categorized in many ways, like orbit and size.
+                                                          One really interesting category for us are cubesats.
+                                                        </aside>
+                                                </div>
+                                        </section>
+                                        <section data-background="./cubesat.jpg">
+                                          <aside class="notes">
+                                            Cubesats are small satelites, size 10x10x10cm that can be easily constructed using of the self hardware.
+                                          </aside>
+                                        </section>
+                                        <section data-background="./chart_cubesat_launches.jpg">
+                                          <aside class="notes">
+                                            Because its easy to construct them, we have seen a huge rate of launches during the past 4 years. What's interesting about cubesats is that most of them are using amateur radio bands for their transmissions.
+                                            Radio bands: non encrypted, free to air, scientific payloads, status beacons.
+                                          </aside>
+                                        </section>
+                                        <section data-background="./complex.png">
+                                                <div style="background-color: rgba(0, 0, 0, 0.8); color: #fff; padding: 20px; border-radius: 20px;">
+                                                        <h2>Low Earth Orbit Satellites</h2>
+                                                        <p>We don't see them all the time!</p>
+                                                </div>
+                                                <aside class="notes">
+                                                  Unfortunately, most of them are low earth orbit satellites (200-2000km). That means that their orbital period is quite short (couple of hours). That means that for those that want to listen to them, they only have a short overpassing time window (for a specific location).
+                                                </aside>
+                                        </section>
+                                        <section data-background="./galileo-ground-station.jpg">
+                                                <div style="background-color: rgba(0, 0, 0, 0.6); color: #fff; padding: 20px; border-radius: 20px;">
+                                                        <h2>Ground Stations</h2>
+                                                        <p>big and scary</p>
+                                                        <aside class="notes">
+                                                          <small>
+                                                          In order to listen to satellites we use ground stations.
+                                                          A ground station is basically antennas mounted to a rotator that can track the position of the satellite in the sky and receive the signal for a specific frequency.
+
+                                                          As you can see, ground stations like this can be super expensive and under heavy regulations, so,
+                                                          In order to tackle this problem, the first thing that we needed to solve this was to provide an open source cheap reference design. But that could only solve the cost issue, but we wanted also to address the global coverage issue.
+                                                          </small>
+                                                        </aside>
+                                                </div>
+                                        </section>
+                                </section>
+                                <section>
+                                        <section data-background="./network.png">
+                                                <div style="background-color: rgba(0, 0, 0, 0.8); color: #fff; padding: 20px; border-radius: 20px;">
+                                                        <h2>Let's create a Network</h2>
+                                                        <p>easy, right?</p>
+                                                </div>
+                                        </section>
+                                        <section data-background="./idea.png" data-background-size="1000px">
+                                          <aside class="notes">
+                                            Design: users have access to our global network and submit satellite observation jobs. Then our network calculates the observation and sends the jobs to our global deployment so our ground stations could track and communicate to satellites.
+                                          </aside>
+                                        </section>
+                                </section>
+                                <section>
+                                    <p class="fragment">No unified way to do this</p>
+                                    <p class="fragment">Let's do everything from scratch :)</p>
+                                    <p class="fragment">... but in a modular way</p>
+
+                                    <aside class="notes">
+                                      When we came up with the initial architecture we found out that there was no unified way to do this. So we decided to create everything from scratch. This is not an easy task so we focused on implementing everything in a modular way. Specifically we wanted to reuse existing components to tackle the initial problem.
+
+                                     Let's dive into our stack.
+                                    </aside>
+                                </section>
+                                <section>
+                                        <section data-background="./gs.JPG">
+                                                <div style="background-color: rgba(0, 0, 0, 0.8); color: #fff; padding: 20px; border-radius: 20px;">
+                                                        <h2>Rotator</h2>
+                                                        <p>3D Printed, cheap, reliable</p>
+                                                </div>
+                                                <aside class="notes">
+                                                  Rotator is a mechanical device that enables antennas to move on azimuth and altitude dimensions.
+                                                </aside>
+                                        </section>
+                                        <section data-background="./antenna.jpg">
+                                          <aside class="notes">
+                                            Here you can see our first deployment. This is our v2 rotator in the rooftop of our hackerspace in Athens and a UHF hellical antennan mounted on it.
+                                          </aside>
+                                        </section>
+                                        <section data-background="./dvbt.JPG">
+                                          <aside class="notes">
+                                            For the receiving we are using everyones favourite DVB-T. The off the shelve solution caused some instability in our setup (PPM errors) so we modded the oscillator for extra stability.
+                                          </aside>
+                                        </section>
+                                </section>
+                                <section>
+                                        <section data-background="">
+                                                <div style="background-color: rgba(0, 0, 0, 0.8); color: #fff; padding: 20px; border-radius: 20px;">
+                                                        <h2>Permanent vs. Portable</h2>
+                                                        <p>We have both!</p>
+                                                </div>
+                                                <aside class="notes">
+                                                  A ground station can be permaent or portable and we have both designs.
+                                                </aside>
+                                        </section>
+                                        <section data-background="./tripod.jpg">
+                                          <aside class="notes">
+                                            Here you can see our tripod design for portable setups.
+                                          </aside>
+                                        </section>
+                                        <section data-background="./radome.jpg">
+                                          <aside class="notes">
+                                            We also provide a design for permanent setups using a radome. This is an optional one mostly usefull for extreme weather conditions.
+                                          </aside>
+                                        </section>
+                                </section>
+                                <section>
+                                        <section data-background-video="./network-screencast.mov">
+                                                <div style="background-color: rgba(0, 0, 0, 0.8); color: #fff; padding: 20px; border-radius: 20px;">
+                                                        <h2>The Network</h2>
+                                                        <p>Open Data from everywhere!</p>
+                                                        <p>demo at network-dev.satnogs.org</p>
+                                                </div>
+                                        </section>
+                                        <section data-background-video="./network-scheduling.mp4">
+                                        </section>
+                                </section>
+                                <section>
+                                        <section data-background="satnogs-client.png">
+                                                <div style="background-color: rgba(0, 0, 0, 0.8); color: #fff; padding: 20px; border-radius: 20px;">
+                                                        <h2>The Client</h2>
+                                                        <p>modular, extensible</p>
+                                                </div>
+                                                <aside class="notes">
+                                                  After the network schedules the observation, the client is polling the network and gets the jobs assigned to it. Now client waits until the time comes to start tracking. Calcules satellite's position and moves the rotator accordingly.
+                                                </aside>
+                                        </section>
+                                        <section>
+                                                <p class="fragment">Python</p>
+                                                <p class="fragment">Based on existing protocols (rotctrl and rigctrl)</p>
+                                                <p class="fragment">Reuses existing software: rtl_sdr, oggenc</class>
+                                                <p class="fragment">Works with other rotators and radios too!</p>
+                                        </section>
+                                </section>
+                                <section>
+                                        <section data-background="satnogs-db.png">
+                                                <div style="background-color: rgba(0, 0, 0, 0.8); color: #fff; padding: 20px; border-radius: 20px;">
+                                                        <h2>SatNOGS DB</h2>
+                                                        <p>Crowdsourced, community</p>
+                                                        <aside class="notes">
+                                                          An interesting issue that we encountered was that there was no source to get satellite's transceiver data. Transceiver data = Frequency, Modulation, Baud rate etc. That's why we created satnogs db, a crowdsourced satellite transceiver database based on community's contributions.
+                                                        </aside>
+                                                </div>
+                                        </section>
+                                        <section>
+                                          <p class="fragment">Django based app</p>
+                                                <p class="fragment">Public API</p>
+                                                <p class="fragment">Thriving community</p>
+                                        </section>
+                                </section>
+                                <section data-background="./stack.jpg">
+                                  <aside class="notes">
+                                    <small>
+                                      So overally our stack looks like this.
+                                      You can use different combinations of antennas (yagi, helical, uhf, vhf)
+                                      You can either mount it to our reference design or nay commercial rotator.
+                                      On the client side you can use the embedded platform that you want (beaglebone green).
+                                      Then you could either run SatNOGS client to orchestrate the satellite tracking, other commercial software or their open source implementations. Finally you can decide if you want to send the data back to the network or just use the ground station offline.
+                                    </small>
+                                  </aside>
+                                </section>
+                                <section data-background="./collage.jpg">
+                                  <aside class="notes">
+                                    <small>
+                                    As you can understand, this is a really complicated problem that we are trying to tackle and wouldn't be possible to achieve anything without the community help. Here you can see pictures from ground stations being build from contributors all around the world.
+
+                                    Through mingling with the open space enthusiasts all around the world it was clear that we could not onlyadvance our open source ideals to just communicating with satellites. That's why we created libre space foundation.
+                                    </small>
+                                  </aside>
+                                </section>
+                                <section data-background="./lsf.png">
+                                  <aside class="notes">
+                                    A non profit initiative to advance LIBRE/OPEN SOURCE/SPACE projects. We already have some satellite specific open source projects in the works. We are looking for other existing open source space project for collaboration.
+                                  </aside>
+                                </section>
+                                <section data-background="">
+                                  <h2>Next steps</h2>
+                                  <ul>
+                                    <li>More ground stations</li>
+                                    <li>TX capabilities</li>
+                                    <li>Increase interoperability with existing systems</li>
+                                  </ul>
+                                </section>
+                                <section data-background="">
+                                        <h2>We need you!</h2>
+                                        <p></p>
+                                        <aside class="notes">
+                                          This could not be possible without volunteers like us from around the world and we are still looking for more people to join our project. These contributors could be from different fields like mechanical design, electrical design, rf experts etc. as the stack is pretty huge.
+                                        </aside>
+                                </section>
+                                <section data-background="IMG_2700.JPG">
+                                        <div style="background-color: rgba(0, 0, 0, 0.8); color: #fff; padding: 20px; border-radius: 20px;">
+                                                <h2>Thank you</h2>
+                                                <p>Check satnogs.org for more info!</p>
+                                                <ul>
+                                                  <li>Community forum: https://community.satnogs.org</li>
+                                                  <li>Github: https://github.com/satnogs</li>
+                                                  <li>Deployment: https://network.satnogs.org</li>
+                                                </ul>
+                                        </div>
+                                        <aside class="notes">
+                                          Make sure you drop by SpaceVillage where have a SatNOGS station for demo.
+                                          Thank you.
+                                        </aside>
+                                </section>
+                                <section>
+                                  <h2>Questions?</h2>
+                                </section>
+                        </div>
+
+                </div>
+
+                <script src="lib/js/head.min.js"></script>
+                <script src="js/reveal.js"></script>
+
+                <script>
+
+                        // Full list of configuration options available at:
+                        // https://github.com/hakimel/reveal.js#configuration
+                        Reveal.initialize({
+                                controls: true,
+                                progress: true,
+                                history: true,
+                                center: true,
+
+                                transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+                                // Optional reveal.js plugins
+                                dependencies: [
+                                        { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                                        { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                                        { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                                        { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+                                        { src: 'plugin/zoom-js/zoom.js', async: true },
+                                        { src: 'plugin/notes/notes.js', async: true }
+                                ]
+                        });
+
+                </script>
+
+        </body>
+</html>
